@@ -1,29 +1,29 @@
 /**
- * @param {string[]} words
- * @param {string} order
- * @return {boolean}
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
  */
-var isAlienSorted = function (W, O) {
-  let alpha = new Map([['', -1]])
-  for (let i = 0; i < O.length; i++) alpha.set(O.charAt(i), i)
-  for (let i = 1; i < W.length; i++) {
-    let a = W[i - 1],
-      b = W[i]
-    for (let j = 0; j < a.length; j++) {
-      let achar = a.charAt(j),
-        bchar = b.charAt(j),
-        aix = alpha.get(achar),
-        bix = alpha.get(bchar)
-      if (aix < bix) break
-      if (aix > bix) return false
-    }
-  }
-  return true
-}
+/**
+ * @param {ListNode} head
+ * @return {number}
+ */
+var getDecimalValue = function (head) {
+  // let result = head.val + ''
+  // // loop to get all values and merged in result
+  // while (head.next !== null) {
+  //   result += head.next.val
+  //   head = head.next
+  // }
+  // // parse binary to decimal
+  // return parseInt(result, 2)
 
-console.log(isAlienSorted(['hello', 'leetcode'], 'hlabcdefgijkmnopqrstuvwxyz'))
-console.log(
-  isAlienSorted(['word', 'world', 'row'], 'worldabcefghijkmnpqstuvxyz')
-)
-console.log(isAlienSorted(['apple', 'app'], 'abcdefghijklmnopqrstuvwxyz'))
-console.log(isAlienSorted(['hello', 'hello'], 'abcdefghijklmnopqrstuvwxyz'))
+  let num = head.val
+  while (head.next !== null) {
+    num = num * 2 + head.next.val
+    head = head.next
+  }
+
+  return num
+}
