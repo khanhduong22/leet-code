@@ -3,7 +3,7 @@
  * @param {number} target
  * @return {number}
  */
-var search = function (nums, target) {
+var searchInsert = function (nums, target) {
   // type: minimization
   // scale: `lo` -> invalid (- 1), `hi` -> valid (nums.length)
   // initialize: `lo` to `- 1`, `hi` to `nums.length`
@@ -22,9 +22,13 @@ var search = function (nums, target) {
   }
 
   // in minimization template, hi contains the return index
-  return nums[hi] === target ? hi : -1
+  return hi
 }
 
-console.log(search([-1, 0, 3, 5, 9, 12], 9))
-console.log(search([-1, 0, 3, 5, 9, 12], 2))
-console.log(search([-1, 0, 3, 5, 9, 12, 15], 2))
+console.log(searchInsert([-1, 0, 3, 5, 9, 12], 9))
+console.log(searchInsert([-1, 0, 3, 5, 9, 12], 2))
+console.log(searchInsert([-1, 0, 3, 5, 9, 12, 15], 2))
+
+console.log(searchInsert([1, 3, 5, 6], 5))
+console.log(searchInsert([1, 3, 5, 6], 2))
+console.log(searchInsert([1, 3, 5, 6], 7))
